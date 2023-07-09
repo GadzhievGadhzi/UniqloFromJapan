@@ -1,0 +1,323 @@
+﻿@model Product
+
+@{
+    var product = Model;
+}
+
+
+<div class="row">
+    <h1 class="product-title">@product.Title</h1>
+
+    <div class="product-rating mt-3">
+        @for (int i = 0; i < 5; i++) {
+            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false" role="presentation" style="width: 14px; height: 14px;"><g fill-rule="evenodd"><g><g><g><g><g><g transform="translate(-88.000000, -1419.000000) translate(60.000000, 1403.000000) translate(28.000000, 16.000000)"><polygon points="4.52727273 24 7.34181818 14.9345455 0 9.21818182 9.12 9.21818182 12.0109091 0 14.88 9.21818182 24 9.21818182 16.68 14.9345455 19.4727273 24 12.0109091 18.3927273"></polygon></g></g></g></g></g></g></g></svg>
+        }
+        <label width="24" for="fit" style="font-size: 14px;"><b>5.0</b></label>
+    </div>
+
+    <div class="product-desc">
+        <p>@product.Description</p>
+    </div>
+
+    <div class="col-md-4 p-3">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for(int i = 0; i < product.Images.Count(); i++) {
+                    if(i == 0) {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="active"></li>
+                    } else {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i"></li>
+                    }
+                }
+            </ol>
+            <div class="carousel-inner">
+                @foreach(var image in product.Images) {
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="data:image/jpeg;base64,@(product.Images[0])" alt="First slide">
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 15%; max-width: 17%;">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="width: 15%; max-width: 17%;">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-3 p-3">
+        <p style="font-size: 18px;"><b>Color: 54 GREEN</b></p>
+
+        <div class="product-color">
+            @foreach(var color in product.Colors) {
+                <img style="height: 36px; width: 36px; border: 1px solid black; margin-bottom: 3px; background-color:@color.InHtmlColorCode()">
+            }
+        </div>
+
+        <div class="product-size">
+            <br />
+            <p style="font-size: 18px;"><b>Size: UNISEX M</b></p>
+            @foreach (var size in product.Size) {
+                <input class="product-block-size text-center" style="height: 36px; width: 36px; border: 1px solid black; margin-bottom: 3px;" value="@size.ToString()" readonly="readonly">
+            }
+        </div>
+
+        <br />
+        <div class="product-price" style="font-family: Helvetica Neue, Helvetica, Arial, system-ui, -apple-system, sans-serif;">
+            <p style="font-size: 28px;">$@product.Price</p>
+        </div>
+
+        @*<p><b>Quantity</b></p>
+        <div class="custom-select" style="width:200px;">
+            <select>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>*@
+
+        <button type="button" class="btn btn-danger" style="border-radius: unset; width: 200px; background-color: #e00;">ADD TO CART</button>
+
+    </div>
+
+    <div class="col-md-5 p-3">
+        <p style="font-size: 18px;"><b>Description:</b></p>
+        <p>
+            - Updated chino shorts for basic casual wear.
+            <br />- Heavier-weight authentic twill fabric.
+            <br />- Sleek silhouette looks sharp while staying casual.
+            <br />- Meticulous design details including a seamed waist, thick belt loops, coin pockets, and a drawstring.
+        </p>
+
+        <p style="font-size: 18px;"><b>Materials:</b></p>
+        <p>
+            Fabric details
+            <br />Body: 100% Cotton/ Pocket Lining: 100% Cotton
+
+            <br />
+            <br />Function details
+            <br />・Fit: Regular
+            <br />・Pockets: With Pockets
+            <br />
+            <br />Washing instructions
+            <br />Machine wash cold, gentle cycle, Do not dry clean
+            <br />- The images shown may include colors that are not available.
+        </p>
+    </div>
+</div>
+
+<style>
+    .product-title {
+        -webkit-box-orient: vertical;
+        -webkit-font-smoothing: antialiased;
+        color: rgb(0, 0, 0);
+        display: -webkit-box;
+        font-family: "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, sans-serif;
+        font-style: normal;
+        letter-spacing: 0.025rem;
+        margin: 0px;
+        overflow: hidden;
+        font-size: 23px;
+    }
+
+    p {
+        font-size: 15px;
+        color: black;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        background-color: white;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        color: #fff;
+        width: 20px;
+        background-color: rgb(0 0 0 / 0%);
+    }
+
+    .carousel-indicators li {
+        background-color: white;
+    }
+
+    .carousel-item img {
+        height: 50%;
+        width: 100%;
+        max-height: 409px;
+    }
+
+    .carousel {
+        width: 100%;
+        min-width: 200px;
+    }
+
+    .product-color img:hover {
+        padding: 1px;
+    }
+
+    .product-size .product-block-size:hover {
+        padding: 1px;
+    }
+
+    /* The container must be positioned relative: */
+    .custom-select {
+        position: relative;
+        font-family: Arial;
+        border: 1px solid black;
+        border-radius: unset;
+    }
+
+        .custom-select select {
+            display: none; /*hide original SELECT element: */
+        }
+
+    .select-selected {
+        background-color: #fff;
+    }
+
+        /* Style the arrow inside the select element: */
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #fff transparent transparent transparent;
+        }
+
+        /* Point the arrow upwards when the select box is open (active): */
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #fff transparent;
+            top: 7px;
+        }
+
+    /* style the items (options), including the selected item: */
+    .select-items div, .select-selected {
+        color: black;
+        /*padding: 8px 16px;
+                border: 1px solid transparent;*/
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+    }
+
+    /* Style items (options): */
+    .select-items {
+        position: absolute;
+        background-color: white;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        border: 1px solid black;
+    }
+
+
+    /* Hide the items when the select box is closed: */
+    .select-hide {
+        display: none;
+    }
+
+    .select-items div:hover, .same-as-selected {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+
+<script>
+
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /* Look for any elements with the class "custom-select": */
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        ll = selElmnt.length;
+        /* For each element, create a new DIV that will act as the selected item: */
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+        /* For each element, create a new DIV that will contain the option list: */
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 1; j < ll; j++) {
+            /* For each option in the original select element,
+            create a new DIV that will act as an option item: */
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            c.addEventListener("click", function (e) {
+                /* When an item is clicked, update the original select box,
+                and the selected item: */
+                var y, i, k, s, h, sl, yl;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                sl = s.length;
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < sl; i++) {
+                    if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        yl = y.length;
+                        for (k = 0; k < yl; k++) {
+                            y[k].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
+                    }
+                }
+                h.click();
+            });
+            b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function (e) {
+            /* When the select box is clicked, close any other select boxes,
+            and open/close the current select box: */
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+
+    function closeAllSelect(elmnt) {
+        /* A function that will close all select boxes in the document,
+        except the current select box: */
+        var x, y, i, xl, yl, arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        xl = x.length;
+        yl = y.length;
+        for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+                arrNo.push(i)
+            } else {
+                y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+            }
+        }
+    }
+
+    /* If the user clicks anywhere outside the select box,
+    then close all select boxes: */
+    document.addEventListener("click", closeAllSelect);
+</script>

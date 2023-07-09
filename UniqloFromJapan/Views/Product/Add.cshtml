@@ -1,0 +1,50 @@
+﻿@model ProductViewModel;
+
+<form action="Add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Product name</label>
+        <input type="text" class="form-control" placeholder="Enter product name" name="Title">
+    </div>
+
+    <div class="form-group">
+        <label>Product description</label>
+        <textarea class="form-control" rows="3" name="Description"></textarea>
+    </div>
+
+    <div class="form-outline">
+        <label class="form-label">Product price</label>
+        <input type="number" class="form-control" name="Price" step=".01" />
+    </div>
+
+    <br />
+
+    @for (int i = 0; i < Model.CheckBoxColorItems.Count; i++) {
+        var color = Model.CheckBoxColorItems[i].Color;
+        <label class="form-check-label">
+            @color.ToString()
+        </label>
+
+        @Html.CheckBoxFor(m => m.CheckBoxColorItems![i].IsColorSelected)
+        @Html.HiddenFor(m => m.CheckBoxColorItems![i].Color)
+    }
+
+    <br />
+
+    <br />
+
+    @for (int i = 0; i < Model.CheckBoxSizeItems.Count; i++) {
+        var color = Model.CheckBoxSizeItems[i].Size;
+        <label class="form-check-label">
+            @color.ToString()
+        </label>
+
+        @Html.CheckBoxFor(m => m.CheckBoxSizeItems![i].IsSizeSelected)
+        @Html.HiddenFor(m => m.CheckBoxSizeItems![i].Size)
+    }
+
+    <br />
+        <input type="file" name="uploads" /><br>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary">Add product</button>
+</form>
