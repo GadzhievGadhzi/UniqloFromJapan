@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fF3sVirokBkClN4B08ggPKlEGX07LPiiO1lb+sZOX8VXTCAo37tJ6WlwgnPGSv7vpW4XNrC4tA/TbsTohQupXw==",
+  "dgSpecHash": "uDT5GZ6E0ecYr2NZSOVk644bYEo6MgNuQzSouHEFh8MggKUCloAZ4s4bunq0ZQYtVlbtFYyzKkDV397M8O1Swg==",
   "success": true,
-  "projectFilePath": "D:\\Development\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj",
+  "projectFilePath": "G:\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gadzhiev_g\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\gadzhiev_g\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.19\\microsoft.entityframeworkcore.6.0.19.nupkg.sha512",

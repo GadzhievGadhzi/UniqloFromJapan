@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Development\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj": {}
+    "G:\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj": {}
   },
   "projects": {
-    "D:\\Development\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj": {
+    "G:\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Development\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj",
+        "projectUniqueName": "G:\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj",
         "projectName": "UniqloFromJapan",
-        "projectPath": "D:\\Development\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj",
+        "projectPath": "G:\\UniqloFromJapan\\UniqloFromJapan\\UniqloFromJapan.csproj",
         "packagesPath": "C:\\Users\\gadzhiev_g\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\UniqloFromJapan\\UniqloFromJapan\\obj\\",
+        "outputPath": "G:\\UniqloFromJapan\\UniqloFromJapan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gadzhiev_g\\AppData\\Roaming\\NuGet\\NuGet.Config",

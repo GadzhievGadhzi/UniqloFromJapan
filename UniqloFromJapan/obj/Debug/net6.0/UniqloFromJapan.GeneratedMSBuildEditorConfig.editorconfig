@@ -9,49 +9,49 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UniqloFromJapan
 build_property.RootNamespace = UniqloFromJapan
-build_property.ProjectDir = C:\Users\gadzhiev_g\Desktop\UniqloFromJapan\UniqloFromJapan\
+build_property.ProjectDir = G:\UniqloFromJapan\UniqloFromJapan\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\gadzhiev_g\Desktop\UniqloFromJapan\UniqloFromJapan
+build_property.MSBuildProjectDirectory = G:\UniqloFromJapan\UniqloFromJapan
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Home/Index.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Home/Privacy.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/Add.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Product/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/Get.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Product/Get.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/Index.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Shared/Error.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Shared/_ValidationScriptsPartial.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/_ViewImports.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/_ViewStart.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gadzhiev_g/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Shared/_Layout.cshtml]
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-te4ytmzn9p
