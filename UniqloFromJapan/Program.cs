@@ -11,6 +11,7 @@ namespace UniqloFromJapan {
 
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
             builder.Services.AddDbContext<DataRepository>(
                 options => options.UseNpgsql(builder.Configuration.GetConnectionString("dbUniqloFromJapan")!));
