@@ -11,6 +11,7 @@ namespace UniqloFromJapan.Models {
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? Price { get; set; }
+        public string? Gender { get; set; }
         public ProductColor[] Colors { get; set; }
         public ProductSize[] Size { get; set; }
         public int Rating { get; set; }
@@ -19,7 +20,7 @@ namespace UniqloFromJapan.Models {
         public Product() {
             Images = new string[] { };
         }
-        public Product(int id, string title,  string description, string price, ProductColor[] colors, ProductSize[] size, int rating, string[] images) {
+        public Product(int id, string title,  string description, string price, ProductColor[] colors, ProductSize[] size, int rating, string[] images, string? gender) {
             Id = id;
             Title = title;
             Description = description;
@@ -28,6 +29,7 @@ namespace UniqloFromJapan.Models {
             Size = size;
             Rating = rating;
             Images = images;
+            Gender = gender;
         }
     }
 

@@ -37,6 +37,9 @@ namespace UniqloFromJapan.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
+
                     b.Property<string[]>("Images")
                         .IsRequired()
                         .HasColumnType("text[]");

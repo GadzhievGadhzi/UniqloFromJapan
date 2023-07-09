@@ -50,7 +50,7 @@
     </div>
 
     <div class="col-md-3 p-3">
-        <p style="font-size: 18px;"><b>Color: 54 GREEN</b></p>
+        <p style="font-size: 18px;"><b>Product colors:</b></p>
 
         <div class="product-color">
             @foreach(var color in product.Colors) {
@@ -60,7 +60,7 @@
 
         <div class="product-size">
             <br />
-            <p style="font-size: 18px;"><b>Size: UNISEX M</b></p>
+            <p style="font-size: 18px;"><b>Product sizes:</b></p>
             @foreach (var size in product.Size) {
                 <input class="product-block-size text-center" style="height: 36px; width: 36px; border: 1px solid black; margin-bottom: 3px;" value="@size.ToString()" readonly="readonly">
             }

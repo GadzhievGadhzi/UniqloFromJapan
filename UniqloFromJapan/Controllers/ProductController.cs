@@ -94,6 +94,7 @@ namespace UniqloFromJapan.Controllers {
                 Title = model.Title,
                 Description = model.Description,
                 Price = model.Price,
+                Gender = model.Gender,
                 Colors = isColorSelected,
                 Size = isSizeSelected,
             };
