@@ -37,6 +37,22 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpGet]
+        public IActionResult Remove() {
+            return View();  
+        }
+
+        [HttpPost]
+        public IActionResult Remove(int id) {
+            var product = _dataRepository.Products.Where(x => x.Id == id).FirstOrDefault();
+            if (product != null) {
+                _dataRepository.Products.Remove(product);
+                _dataRepository.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Get(int id) {
             var product = _dataRepository.Products.Where(x => x.Id == id).FirstOrDefault();
             if(product == null) {
@@ -69,7 +85,7 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpPost]
-        public void Add(ProductViewModel model) {
+        public IActionResult Add(ProductViewModel model) {
 
             var isColorSelected = model.CheckBoxColorItems!.Where(p => p.IsColorSelected).Select(x => x.Color).ToArray();
             var isSizeSelected = model.CheckBoxSizeItems!.Where(p => p.IsSizeSelected).Select(x => x.Size).ToArray();
@@ -98,6 +114,9 @@ namespace UniqloFromJapan.Controllers {
 
             _dataRepository.Products.Add(product);
             _dataRepository.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+            /*return RedirectToAction("Get", "Product", new { Id = id });*/
         }
     }
 }
