@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UniqloFromJapan.Data;
 using UniqloFromJapan.Models;
-using System.Web;
 using Newtonsoft.Json;
 
 namespace UniqloFromJapan.Controllers {
@@ -117,16 +116,20 @@ namespace UniqloFromJapan.Controllers {
             List<Product>? products = new List<Product>();
             var product = _dataRepository.Products.Where(x => x.Id == id).First();
 
-            if (HttpContext.Request.Cookies.TryGetValue("WishList", out string? value)) {
+            if (Request.Cookies.TryGetValue("WishList", out string? value)) {
                 products = JsonConvert.DeserializeObject<List<Product>>(value!);
                 products!.Add(product);
-                HttpContext.Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products));
+                Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products), new CookieOptions() {
+                    Expires = DateTimeOffset.Now.AddDays(1)
+                });
             } else {
                 products.Add(product);
-                HttpContext.Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products));
+                Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products), new CookieOptions() {
+                    Expires = DateTimeOffset.Now.AddDays(1)
+                });
             }
 
-            var cookie = HttpContext.Request.Cookies["WishList"];
+            var cookie = Request.Cookies["WishList"];
             return View(products);
         }
     }

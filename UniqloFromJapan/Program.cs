@@ -1,18 +1,12 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
 using UniqloFromJapan.Data;
-using UniqloFromJapan.Models;
 
 namespace UniqloFromJapan {
     public class Program {
         public static void Main(string[] args) {
-
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
             builder.Services.AddRouting(options => options.LowercaseUrls = true);
-
             builder.Services.AddDbContext<DataRepository>(
                 options => options.UseNpgsql(builder.Configuration.GetConnectionString("dbUniqloFromJapan")!));
 
