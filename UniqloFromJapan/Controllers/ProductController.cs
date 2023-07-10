@@ -125,6 +125,8 @@ namespace UniqloFromJapan.Controllers {
                 products.Add(product);
                 HttpContext.Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products));
             }
+
+            var cookie = HttpContext.Request.Cookies["WishList"];
             return View(products);
         }
     }
