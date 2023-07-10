@@ -48,7 +48,7 @@
             <div class="card mb-3 box-shadow">
                 <a href="/product/get?id=@product.Id">
                     <div class="card-body">
-                        <img class="card-img-top  mb-2" src="data:image/jpeg;base64,@(product.Images[0])" alt="Card image cap">
+                        <img class="card-img-top  mb-2" src="data:image/jpeg;base64,@(product.Images[0])" alt="Card image cap" style="max-height: 223px">
 
                         <div class="product-color">
                             @foreach (var color in product.Colors) {
