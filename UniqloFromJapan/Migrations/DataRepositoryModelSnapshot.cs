@@ -30,12 +30,12 @@ namespace UniqloFromJapan.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("BigDescription")
+                        .HasColumnType("text");
+
                     b.Property<int[]>("Colors")
                         .IsRequired()
                         .HasColumnType("integer[]");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
 
                     b.Property<string>("Gender")
                         .HasColumnType("text");
@@ -44,11 +44,17 @@ namespace UniqloFromJapan.Migrations
                         .IsRequired()
                         .HasColumnType("text[]");
 
+                    b.Property<string>("Materials")
+                        .HasColumnType("text");
+
                     b.Property<string>("Price")
                         .HasColumnType("text");
 
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
+
+                    b.Property<string>("ShortDescription")
+                        .HasColumnType("text");
 
                     b.Property<int[]>("Size")
                         .IsRequired()

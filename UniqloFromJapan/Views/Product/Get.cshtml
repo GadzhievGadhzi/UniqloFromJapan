@@ -16,7 +16,7 @@
     </div>
 
     <div class="product-desc">
-        <p>@product.Description</p>
+        <p>@product.ShortDescription</p>
     </div>
 
     <p>Product ID: @product.Id</p>
@@ -90,32 +90,19 @@
             </select>
         </div>*@
 
-        <button type="button" class="btn btn-danger" style="border-radius: unset; width: 200px; background-color: #e00;">ADD TO CART</button>
+        <button type="button" class="btn btn-danger" style="border-radius: unset; width: 100%; background-color: #e00;">ADD TO CART</button>
 
     </div>
 
     <div class="col-md-5 p-3">
         <p style="font-size: 18px;"><b>Description:</b></p>
         <p>
-            - Updated chino shorts for basic casual wear.
-            <br />- Heavier-weight authentic twill fabric.
-            <br />- Sleek silhouette looks sharp while staying casual.
-            <br />- Meticulous design details including a seamed waist, thick belt loops, coin pockets, and a drawstring.
+            @product.BigDescription
         </p>
 
         <p style="font-size: 18px;"><b>Materials:</b></p>
         <p>
-            Fabric details
-            <br />Body: 100% Cotton/ Pocket Lining: 100% Cotton
-
-            <br />
-            <br />Function details
-            <br />・Fit: Regular
-            <br />・Pockets: With Pockets
-            <br />
-            <br />Washing instructions
-            <br />Machine wash cold, gentle cycle, Do not dry clean
-            <br />- The images shown may include colors that are not available.
+            @product.Materials
         </p>
     </div>
 </div>

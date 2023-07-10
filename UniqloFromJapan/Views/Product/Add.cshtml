@@ -7,8 +7,18 @@
     </div>
 
     <div class="form-group">
-        <label>Product description</label>
-        <textarea class="form-control" rows="3" name="Description"></textarea>
+        <label>Product short description</label>
+        <input type="text" class="form-control" name="ShortDescription">
+    </div>
+
+    <div class="form-group">
+        <label>Product big description</label>
+        <textarea class="form-control" rows="3" name="BigDescription"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Product materials</label>
+        <textarea class="form-control" rows="3" name="Materials"></textarea>
     </div>
 
     <div class="form-outline">
@@ -48,8 +58,9 @@
     }
 
     <br />
-        <input type="file" name="uploads" /><br>
+    <br />
+        <input accept="image/*" id="File1" multiple="multiple" name="File1" type="file" />
     <br />
     <br />
-    <button type="submit" class="btn btn-primary">Add product</button>
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Add product</button>
 </form>

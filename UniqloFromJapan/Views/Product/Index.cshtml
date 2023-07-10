@@ -44,11 +44,11 @@
 
 <div class="row md-center">
     @foreach (var product in products) {
-        <a href="product/get?id=@product.Id">
-            <div class="col-md-3">
-                <div class="card mb-3 box-shadow">
+        <div class="col-md-3">
+            <div class="card mb-3 box-shadow">
+                <a href="product/get?id=@product.Id">
                     <div class="card-body">
-                        <img class="card-img-top  mb-1" src="data:image/jpeg;base64,@(product.Images[0])" alt="Card image cap">
+                        <img class="card-img-top  mb-2" src="data:image/jpeg;base64,@(product.Images[0])" alt="Card image cap">
 
                         <div class="product-color">
                             @foreach (var color in product.Colors) {
@@ -73,9 +73,10 @@
                             <label width="24" for="fit" style="font-size: 14px;">(@product.Rating)</label>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-        </a>
+        </div>
+
     }
 </div>
 

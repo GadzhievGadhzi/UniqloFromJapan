@@ -92,9 +92,11 @@ namespace UniqloFromJapan.Controllers {
 
             var product = new Product() {
                 Title = model.Title,
-                Description = model.Description,
                 Price = model.Price,
                 Gender = model.Gender,
+                Materials = model.Materials,
+                ShortDescription = model.ShortDescription,
+                BigDescription = model.BigDescription,
                 Colors = isColorSelected,
                 Size = isSizeSelected,
             };

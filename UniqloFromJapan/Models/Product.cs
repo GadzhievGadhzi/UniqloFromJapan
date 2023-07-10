@@ -2,14 +2,15 @@
 using Newtonsoft.Json.Converters;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 using UniqloFromJapan.Models;
 
 namespace UniqloFromJapan.Models {
     public class Product {
         public int Id { get; set; }
         public string? Title { get; set; }
-        public string? Description { get; set; }
+        public string? ShortDescription { get; set; }
+        public string? BigDescription { get; set; }
+        public string? Materials { get; set; }
         public string? Price { get; set; }
         public string? Gender { get; set; }
         public ProductColor[] Colors { get; set; }
@@ -20,16 +21,17 @@ namespace UniqloFromJapan.Models {
         public Product() {
             Images = new string[] { };
         }
-        public Product(int id, string title,  string description, string price, ProductColor[] colors, ProductSize[] size, int rating, string[] images, string? gender) {
+        public Product(int id, string title,  string shortDescription, string price, ProductColor[] colors, ProductSize[] size, int rating, string[] images, string? gender, string? bigDescription) {
             Id = id;
             Title = title;
-            Description = description;
             Price = price;
             Colors = colors;
             Size = size;
             Rating = rating;
             Images = images;
             Gender = gender;
+            ShortDescription = shortDescription;
+            BigDescription = bigDescription;
         }
     }
 
