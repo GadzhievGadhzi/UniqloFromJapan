@@ -2,6 +2,7 @@
 using UniqloFromJapan.Data;
 using UniqloFromJapan.Models;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace UniqloFromJapan.Controllers {
     public class ProductController : Controller {
@@ -10,28 +11,8 @@ namespace UniqloFromJapan.Controllers {
             _dataRepository = dataRepository;
         }
 
-        public IActionResult Index() {
-            /*_dataRepository.Products.Add(new Product() {
-                Title = "Stretch Slim-Fit Shorts",
-                Size = new[] {
-                    ProductSize.UNISEX,
-                    ProductSize.XL
-                },
-                Price = "39.90",
-                Colors = new[] {
-                    ProductColor.Purple,
-                    ProductColor.Brown,
-                    ProductColor.Orange,
-                    ProductColor.Green,
-                    ProductColor.Blue,
-                    ProductColor.Red,
-                    ProductColor.Yellow
-                },
-                Rating = 5,
-            });
-
-            _dataRepository.SaveChanges();*/
-
+        [HttpGet]
+        public IActionResult GetAll() {
             var products = _dataRepository.Products.ToArray();
             return View(products);
         }
@@ -120,6 +101,15 @@ namespace UniqloFromJapan.Controllers {
 
             return RedirectToAction("Index", "Home");
             /*return RedirectToAction("Get", "Product", new { Id = id });*/
+        }
+
+        [HttpGet]
+        public IActionResult WishList() {
+            List<Product>? products = new List<Product>();
+            if(HttpContext.Request.Cookies.TryGetValue("WishList", out string? value)) {
+                products = JsonConvert.DeserializeObject<List<Product>>(value);
+            }
+            return View();
         }
     }
 }

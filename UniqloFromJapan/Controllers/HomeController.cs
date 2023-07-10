@@ -11,7 +11,7 @@ namespace UniqloFromJapan.Controllers {
         }
 
         public IActionResult Index() {
-            return RedirectToAction("Index", "Product");
+            return RedirectToAction("GetAll", "Product");
         }
 
         public IActionResult Privacy() {

@@ -36,12 +36,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/UniqloFromJapan/UniqloFromJapan/Views/Product/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Product/GetAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/UniqloFromJapan/UniqloFromJapan/Views/Product/Remove.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxSZW1vdmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/UniqloFromJapan/UniqloFromJapan/Views/Product/WishList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxXaXNoTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/UniqloFromJapan/UniqloFromJapan/Views/Shared/Error.cshtml]

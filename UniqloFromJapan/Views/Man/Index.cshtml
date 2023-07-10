@@ -43,12 +43,11 @@
 <br />
 @if (products.Count() > 0) {
     <center><h4>Сlothes for men</h4></center>
-    <br />
 }
 
 <div class="row md-center">
     @foreach (var product in products) {
-        <a href="product/get?id=@product.Id">
+        <a href="/product/get?id=@product.Id">
             <div class="col-md-3">
                 <div class="card mb-3 box-shadow">
                     <div class="card-body">
