@@ -111,5 +111,21 @@ namespace UniqloFromJapan.Controllers {
             }
             return View();
         }
+
+        [HttpGet]
+        public IActionResult AddWishList(int id) {
+            List<Product>? products = new List<Product>();
+            var product = _dataRepository.Products.Where(x => x.Id == id).First();
+
+            if (HttpContext.Request.Cookies.TryGetValue("WishList", out string? value)) {
+                products = JsonConvert.DeserializeObject<List<Product>>(value!);
+                products!.Add(product);
+                HttpContext.Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products));
+            } else {
+                products.Add(product);
+                HttpContext.Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products));
+            }
+            return View(products);
+        }
     }
 }
