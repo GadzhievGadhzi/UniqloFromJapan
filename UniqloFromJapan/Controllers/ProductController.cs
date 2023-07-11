@@ -22,10 +22,20 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Remove() => View();  
+        public IActionResult Remove() {
+            if (Request.Cookies["Status"] != "Admin") {
+                return RedirectToAction("Login", "Admin");
+            }
+
+            return View();
+        }  
 
         [HttpPost]
         public IActionResult Remove(int id) {
+            if (Request.Cookies["Status"] != "Admin") {
+                return RedirectToAction("Login", "Admin");
+            }
+
             var product = _dataRepository.Products.Where(x => x.Id == id).FirstOrDefault();
             if (product != null) {
                 _dataRepository.Products.Remove(product);
@@ -52,10 +62,20 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Add() => View(new ProductViewModel());
+        public IActionResult Add() {
+            if (Request.Cookies["Status"] != "Admin") {
+                return RedirectToAction("Login", "Admin");
+            }
+
+            return View(new ProductViewModel());
+        }
 
         [HttpPost]
         public async Task<IActionResult> Add(ProductViewModel model) {
+            if (Request.Cookies["Status"] != "Admin") {
+                return RedirectToAction("Login", "Admin");
+            }
+
             var isColorSelected = model.CheckBoxColorItems!.Where(p => p.IsColorSelected).Select(x => x.Color).ToArray();
             var isSizeSelected = model.CheckBoxSizeItems!.Where(p => p.IsSizeSelected).Select(x => x.Size).ToArray();
 
