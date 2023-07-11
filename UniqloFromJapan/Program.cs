@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using UniqloFromJapan.Data;
+using UniqloFromJapan.Services;
 
 namespace UniqloFromJapan {
     public class Program {
@@ -9,6 +11,9 @@ namespace UniqloFromJapan {
             builder.Services.AddRouting(options => options.LowercaseUrls = true);
             builder.Services.AddDbContext<DataRepository>(
                 options => options.UseNpgsql(builder.Configuration.GetConnectionString("dbUniqloFromJapan")!));
+
+            builder.Services.AddTransient<CachingService>();
+            builder.Services.AddMemoryCache();
 
             var app = builder.Build();
             if (!app.Environment.IsDevelopment()) {

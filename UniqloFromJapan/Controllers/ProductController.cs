@@ -2,24 +2,27 @@
 using UniqloFromJapan.Data;
 using UniqloFromJapan.Models;
 using Newtonsoft.Json;
+using UniqloFromJapan.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace UniqloFromJapan.Controllers {
     public class ProductController : Controller {
-        private DataRepository _dataRepository { get; set; }
-        public ProductController(DataRepository dataRepository) {
+        private readonly DataRepository _dataRepository;
+        private readonly CachingService _cachingService;
+        public ProductController(DataRepository dataRepository, CachingService cachingService) {
             _dataRepository = dataRepository;
+            _cachingService = cachingService;
         }
 
         [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult GetAll() {
             var products = _dataRepository.Products.ToArray();
             return View(products);
         }
 
         [HttpGet]
-        public IActionResult Remove() {
-            return View();  
-        }
+        public IActionResult Remove() => View();  
 
         [HttpPost]
         public IActionResult Remove(int id) {
@@ -27,14 +30,14 @@ namespace UniqloFromJapan.Controllers {
             if (product != null) {
                 _dataRepository.Products.Remove(product);
                 _dataRepository.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return View(model: "Продукт успешно удален!");
             }
-            return View();
+            return View(model: "Продукт не найден!");
         }
 
         [HttpGet]
-        public IActionResult Get(int id) {
-            var product = _dataRepository.Products.Where(x => x.Id == id).FirstOrDefault();
+        public async Task<IActionResult> Get(int id) {
+            var product = await _cachingService.GetObjectFromCache(id);
             if(product == null) {
                 return RedirectToAction("Index", "Home");
             }
@@ -42,31 +45,17 @@ namespace UniqloFromJapan.Controllers {
             return View(product);
         }
 
-        [HttpGet]
-        public IActionResult Add() {
-            ProductViewModel model = new ProductViewModel();
-
-            var enumColorModels = new List<EnumColorModel>();
-            var enumSizeModels = new List<EnumSizeModel>();
-
-            var colors = Enum.GetNames(typeof(ProductColor)).ToList();
-            colors.ForEach(x => {
-                enumColorModels.Add(new EnumColorModel() { Color = (ProductColor)Enum.Parse(typeof(ProductColor), x), IsColorSelected = false });
-            });
-
-            var sizes = Enum.GetNames(typeof(ProductSize)).ToList();
-            sizes.ForEach(x => {
-                enumSizeModels.Add(new EnumSizeModel() { Size = (ProductSize)Enum.Parse(typeof(ProductSize), x), IsSizeSelected = false });
-            });
-
-            model.CheckBoxColorItems = enumColorModels;
-            model.CheckBoxSizeItems = enumSizeModels;
-            return View(model);
+        [HttpPost]
+        public async Task Get(int id, object _) {
+            var product = await _cachingService.GetObjectFromCache(id);
+            Response.Cookies.Append(id.ToString(), JsonConvert.SerializeObject(product));
         }
 
-        [HttpPost]
-        public IActionResult Add(ProductViewModel model) {
+        [HttpGet]
+        public IActionResult Add() => View(new ProductViewModel());
 
+        [HttpPost]
+        public async Task<IActionResult> Add(ProductViewModel model) {
             var isColorSelected = model.CheckBoxColorItems!.Where(p => p.IsColorSelected).Select(x => x.Color).ToArray();
             var isSizeSelected = model.CheckBoxSizeItems!.Where(p => p.IsSizeSelected).Select(x => x.Size).ToArray();
 
@@ -92,14 +81,10 @@ namespace UniqloFromJapan.Controllers {
                 var convertedToBase64 = Convert.ToBase64String(imageData);
                 images.Add(convertedToBase64);
             }
-            
             product.Images = images.ToArray();
 
-            _dataRepository.Products.Add(product);
-            _dataRepository.SaveChanges();
-
+            await _cachingService.AddObjectFromCache(product);
             return RedirectToAction("Index", "Home");
-            /*return RedirectToAction("Get", "Product", new { Id = id });*/
         }
 
         [HttpGet]
@@ -112,21 +97,20 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpGet]
-        public IActionResult AddWishList(int id) {
+        public async Task<IActionResult> AddWishList(int id) {
             List<Product>? products = new List<Product>();
-            var product = _dataRepository.Products.Where(x => x.Id == id).First();
+            var product = await _dataRepository.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if(product == null) {
+                return Ok();
+            }
 
             if (Request.Cookies.TryGetValue("WishList", out string? value)) {
                 products = JsonConvert.DeserializeObject<List<Product>>(value!);
                 products!.Add(product);
-                Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products), new CookieOptions() {
-                    Expires = DateTimeOffset.Now.AddDays(1)
-                });
+                Response.Cookies.Append("WishList", "2");
             } else {
                 products.Add(product);
-                Response.Cookies.Append("WishList", JsonConvert.SerializeObject(products), new CookieOptions() {
-                    Expires = DateTimeOffset.Now.AddDays(1)
-                });
+                Response.Cookies.Append("WishList", "1");
             }
 
             var cookie = Request.Cookies["WishList"];
