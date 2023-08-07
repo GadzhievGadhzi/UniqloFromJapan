@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using UniqloFromJapan.Data;
+using UniqloFromJapan.Middlewares;
 using UniqloFromJapan.Services;
 
 namespace UniqloFromJapan {
@@ -12,6 +12,9 @@ namespace UniqloFromJapan {
             builder.Services.AddDbContext<DataRepository>(
                 options => options.UseNpgsql(builder.Configuration.GetConnectionString("dbUniqloFromJapan")!));
 
+            // Middlewares
+            builder.Services.AddTransient<GlobalExceptionHandlingMiddleware>();
+
             builder.Services.AddTransient<CachingService>();
             builder.Services.AddMemoryCache();
 
@@ -21,6 +24,8 @@ namespace UniqloFromJapan {
                 app.UseHsts();
             }
 
+            app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
@@ -28,6 +33,7 @@ namespace UniqloFromJapan {
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
             app.Run();
         }

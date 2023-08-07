@@ -9,73 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UniqloFromJapan
 build_property.RootNamespace = UniqloFromJapan
-build_property.ProjectDir = C:\Users\Admin\Desktop\UniqloFromJapan\UniqloFromJapan\
+build_property.ProjectDir = D:\Development\UniqloFromJapan\UniqloFromJapan\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\Desktop\UniqloFromJapan\UniqloFromJapan
+build_property.MSBuildProjectDirectory = D:\Development\UniqloFromJapan\UniqloFromJapan
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/AboutUs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Admin/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Admin/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Home/Index.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Home/Privacy.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Man/Index.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Man/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/Add.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Product/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/AddWishList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGRXaXNoTGlzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/Get.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Product/Get.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/GetAll.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Product/GetAll.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Product/Remove.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Product/Remove.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxSZW1vdmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Shared/Error.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Product/WishList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxXaXNoTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Woman/Index.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Woman/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29tYW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/_ViewImports.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/_ViewStart.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/UniqloFromJapan/UniqloFromJapan/Views/Shared/_Layout.cshtml]
+[D:/Development/UniqloFromJapan/UniqloFromJapan/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-te4ytmzn9p

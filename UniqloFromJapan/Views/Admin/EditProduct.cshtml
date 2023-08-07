@@ -1,0 +1,72 @@
+﻿@model ProductViewModel;
+
+<form action="Add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Product name</label>
+        <input type="text" class="form-control" placeholder="Enter product name" name="Title">
+    </div>
+
+    <div class="form-group">
+        <label>Product short description</label>
+        <input type="text" class="form-control" name="ShortDescription">
+    </div>
+
+    <div class="form-group">
+        <label>Product big description</label>
+        <textarea class="form-control" rows="3" name="BigDescription"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Product materials</label>
+        <textarea class="form-control" rows="3" name="Materials"></textarea>
+    </div>
+
+    <div class="form-outline">
+        <label class="form-label">Product price</label>
+        <input type="number" class="form-control" name="Price" step=".01" />
+    </div>
+
+    <div class="form-group">
+        <label>Product gender (Man / Woman)</label>
+        <div class="col-md-10">
+            Man
+            @Html.RadioButtonFor(model => model.Gender, "Man")
+            Woman
+            @Html.RadioButtonFor(model => model.Gender, "Woman")
+        </div>
+
+    </div>
+
+    <br />
+
+    @for (int i = 0; i < Model.CheckBoxColorItems.Count; i++) {
+        var color = Model.CheckBoxColorItems[i].Color;
+        <label class="form-check-label">
+            @color.ToString()
+        </label>
+
+        @Html.CheckBoxFor(m => m.CheckBoxColorItems![i].IsColorSelected)
+        @Html.HiddenFor(m => m.CheckBoxColorItems![i].Color)
+    }
+
+    <br />
+
+    <br />
+
+    @for (int i = 0; i < Model.CheckBoxSizeItems.Count; i++) {
+        var color = Model.CheckBoxSizeItems[i].Size;
+        <label class="form-check-label">
+            @color.ToString()
+        </label>
+
+        @Html.CheckBoxFor(m => m.CheckBoxSizeItems![i].IsSizeSelected)
+        @Html.HiddenFor(m => m.CheckBoxSizeItems![i].Size)
+    }
+
+    <br />
+    <br />
+    <input accept="image/*" id="File1" multiple="multiple" name="File1" type="file" />
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Add product</button>
+</form>

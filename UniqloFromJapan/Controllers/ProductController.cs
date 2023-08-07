@@ -15,25 +15,59 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpGet]
-        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult GetAll() {
+
             var products = _dataRepository.Products.ToArray();
-            return View(products);
+
+            ProductAllViewModel? model = new ProductAllViewModel();
+            model.WishList = new int[] { };
+
+            if (Request.Cookies.TryGetValue("UserId", out string? userId)) {
+                var id = int.Parse(userId);
+                var user = _dataRepository.Users.Where(x => x.Id == id).First();
+                model.WishList = user.WishList;
+            }
+
+            model.Products = products;
+
+            var aboutUsModel = _dataRepository.AboutUsModels.FirstOrDefault();
+            return View((model, (aboutUsModel == null) ? new AboutUsModel() : aboutUsModel));
         }
 
         [HttpGet]
-        public IActionResult Remove() {
-            if (Request.Cookies["Status"] != "Admin") {
-                return RedirectToAction("Login", "Admin");
+        public async Task<IActionResult> Remove() {
+            if (Request.Cookies.TryGetValue("UserId", out string? value)) {
+                var userId = int.Parse(value!);
+                var user = await _dataRepository.Users.Where(x => x.Id == userId).FirstOrDefaultAsync();
+                if (user == null) {
+                    return RedirectToAction("Login", "Auth");
+                }
+
+                if (user.Status != UserStatus.Admin) {
+                    return RedirectToAction("Index", "Home");
+                }
+            } else {
+                return RedirectToAction("Login", "Auth");
             }
 
             return View();
         }  
 
         [HttpPost]
-        public IActionResult Remove(int id) {
-            if (Request.Cookies["Status"] != "Admin") {
-                return RedirectToAction("Login", "Admin");
+
+        public async Task<IActionResult> Remove(int id) {
+            if (Request.Cookies.TryGetValue("UserId", out string? value)) {
+                var userId = int.Parse(value!);
+                var user = await _dataRepository.Users.Where(x => x.Id == userId).FirstOrDefaultAsync();
+                if (user == null) {
+                    return RedirectToAction("Login", "Auth");
+                }
+
+                if(user.Status != UserStatus.Admin) {
+                    return RedirectToAction("Index", "Home");
+                }
+            } else {
+                return RedirectToAction("Login", "Auth");
             }
 
             var product = _dataRepository.Products.Where(x => x.Id == id).FirstOrDefault();
@@ -62,9 +96,20 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Add() {
-            if (Request.Cookies["Status"] != "Admin") {
-                return RedirectToAction("Login", "Admin");
+        public async Task<IActionResult> Add() {
+            if (Request.Cookies.TryGetValue("UserId", out string? value)) {
+                var userId = int.Parse(value!);
+                var user = await _dataRepository.Users.Where(x => x.Id == userId).FirstOrDefaultAsync();
+                user.Status = UserStatus.Admin;
+                if (user == null) {
+                    return RedirectToAction("Login", "Auth");
+                }
+
+                if (user.Status != UserStatus.Admin) {
+                    return RedirectToAction("Index", "Home");
+                }
+            } else {
+                return RedirectToAction("Login", "Auth");
             }
 
             return View(new ProductViewModel());
@@ -72,8 +117,18 @@ namespace UniqloFromJapan.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> Add(ProductViewModel model) {
-            if (Request.Cookies["Status"] != "Admin") {
-                return RedirectToAction("Login", "Admin");
+            if (Request.Cookies.TryGetValue("UserId", out string? value)) {
+                var userId = int.Parse(value!);
+                var user = await _dataRepository.Users.Where(x => x.Id == userId).FirstOrDefaultAsync();
+                if (user == null) {
+                    return RedirectToAction("Login", "Auth");
+                }
+
+                if (user.Status != UserStatus.Admin) {
+                    return RedirectToAction("Index", "Home");
+                }
+            } else {
+                return RedirectToAction("Login", "Auth");
             }
 
             var isColorSelected = model.CheckBoxColorItems!.Where(p => p.IsColorSelected).Select(x => x.Color).ToArray();
@@ -108,12 +163,25 @@ namespace UniqloFromJapan.Controllers {
         }
 
         [HttpGet]
-        public IActionResult WishList() {
-            List<Product>? products = new List<Product>();
-            if(HttpContext.Request.Cookies.TryGetValue("WishList", out string? value)) {
-                products = JsonConvert.DeserializeObject<List<Product>>(value);
+        public async Task<IActionResult> WishList() {
+            if (Request.Cookies.TryGetValue("UserId", out string? value)) {
+                var userId = int.Parse(value!);
+                var user = await _dataRepository.Users.Where(x => x.Id == userId).FirstOrDefaultAsync();
+                if (user == null) {
+                    return RedirectToAction("Login", "Auth");
+                }
+
+                var products = new List<Product>();
+                foreach (var item in user.WishList) {
+                    var product = _dataRepository.Products.Where(x => x.Id == item).FirstOrDefault();
+                    if (product == null) {
+                        continue;
+                    }
+                    products.Add(product);
+                }
+                return View(products);  
             }
-            return View();
+            return RedirectToAction("Login", "Auth");
         }
 
         [HttpGet]
@@ -121,20 +189,29 @@ namespace UniqloFromJapan.Controllers {
             List<Product>? products = new List<Product>();
             var product = await _dataRepository.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
             if(product == null) {
-                return Ok();
+                return RedirectToAction("Index", "Home");
             }
 
-            if (Request.Cookies.TryGetValue("WishList", out string? value)) {
-                products = JsonConvert.DeserializeObject<List<Product>>(value!);
-                products!.Add(product);
-                Response.Cookies.Append("WishList", "2");
-            } else {
-                products.Add(product);
-                Response.Cookies.Append("WishList", "1");
-            }
+            if(Request.Cookies.TryGetValue("UserId", out string? value)){
+                var userId = int.Parse(value!);
+                var user = await _dataRepository.Users.Where(x => x.Id == userId).FirstOrDefaultAsync();
+                if(user == null) {
+                    return RedirectToAction("Login", "Auth");
+                }
 
-            var cookie = Request.Cookies["WishList"];
-            return View(products);
+                var wishList = user.WishList.ToList();
+                if (!wishList.Contains(id)) {
+                    wishList.Add(id);
+                    user.WishList = wishList.ToArray();
+                    await _dataRepository.SaveChangesAsync();
+                } else {
+                    wishList.Remove(id);
+                    user.WishList = wishList.ToArray();
+                    _dataRepository.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return RedirectToAction("WishList", "Product");
         }
     }
 }

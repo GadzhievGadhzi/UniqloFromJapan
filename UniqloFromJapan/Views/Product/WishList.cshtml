@@ -1,0 +1,114 @@
+﻿@model List<Product>;
+
+@{
+    var products = Model;
+}
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://im.uniqlo.com/global-cms/spa/res7217d1b40c34a9c0dab9a7b31e03d3f4fr.jpg" class="d-block" style="width: 100%;" alt="...">
+            <div class="carousel-caption d-none d-md-block" style="color: #212529 !important">
+                <h5>UNIQLOFROMJAPAN.COM</h5>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://im.uniqlo.com/global-cms/spa/res7217d1b40c34a9c0dab9a7b31e03d3f4fr.jpg" class="d-block" style="width: 100%;" alt="...">
+            <div class="carousel-caption d-none d-md-block" style="color: #212529 !important">
+                <h5>UNIQLOFROMJAPAN.COM</h5>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://im.uniqlo.com/global-cms/spa/res7217d1b40c34a9c0dab9a7b31e03d3f4fr.jpg" class="d-block" style="width: 100%;" alt="...">
+            <div class="carousel-caption d-none d-md-block" style="color: #212529 !important">
+                <h5>UNIQLOFROMJAPAN.COM</h5>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<br />
+@if (products.Count() > 0) {
+    <center><h4>Your wish list</h4></center>
+}
+
+<div class="row md-center">
+    @foreach (var product in products) {
+        <a href="/product/get?id=@product.Id">
+            <div class="col-md-3">
+                <div class="card mb-3 box-shadow">
+                    <div class="card-body">
+                        <img class="card-img-top  mb-2" src="data:image/jpeg;base64,@((product.Images.Count() <= 0) ? "" : product.Images[0])" alt="Card image cap" style="max-height: 223px">
+
+                        <div class="product-color">
+                            @foreach (var color in product.Colors) {
+                                <label for="fat"><img style="background-color:@color.InHtmlColorCode()"></label>
+                            }
+
+                            <a href="/product/AddWishList?id=@product.Id" style="color: #212529; float: right; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 10">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <p class="card-text mb-1" style="font-size: 13px;">@string.Join('-', product.Size)</p>
+                        <h5 class="card-title mb-1" style="font-size: 15px;">@product.Title</h5>
+                        <p class="card-text" style="color: black;"><b>$@product.Price</b></p>
+
+                        <div class="product-rating mt-3">
+                            @for (int i = 0; i < 5; i++) {
+                                <svg width="24" height="24" viewBox="0 0 24 24" focusable="false" role="presentation" style="width: 14px; height: 14px;"><g fill-rule="evenodd"><g><g><g><g><g><g transform="translate(-88.000000, -1419.000000) translate(60.000000, 1403.000000) translate(28.000000, 16.000000)"><polygon points="4.52727273 24 7.34181818 14.9345455 0 9.21818182 9.12 9.21818182 12.0109091 0 14.88 9.21818182 24 9.21818182 16.68 14.9345455 19.4727273 24 12.0109091 18.3927273"></polygon></g></g></g></g></g></g></g></svg>
+                            }
+                            <label width="24" for="fit" style="font-size: 14px;">(@product.Rating)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+
+
+<style>
+    .carousel-indicators [data-bs-target] {
+        background-color: #212529;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        color: #fff;
+        background-color: #333;
+        width: 50px;
+    }
+
+    .carousel-indicators li {
+        background-color: #333;
+    }
+
+    .filter button {
+        width: 100px;
+        height: 40px;
+    }
+
+    .carousel {
+        min-height: 60px;
+    }
+
+        .carousel img {
+            min-height: 60px;
+        }
+</style>

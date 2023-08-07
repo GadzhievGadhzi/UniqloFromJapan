@@ -35,6 +35,7 @@ namespace UniqloFromJapan.Services {
                     _memoryCache.Set(product.Id, product, cacheEntryOptions);
                 }
             }
+
             return product;
         }
 

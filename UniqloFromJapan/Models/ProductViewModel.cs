@@ -24,5 +24,13 @@
                 CheckBoxSizeItems.Add(new EnumSizeModel() { Size = (ProductSize)Enum.Parse(typeof(ProductSize), x), IsSizeSelected = false });
             });
         }
+
+        public ProductViewModel(Product product) : base() {
+            Title = product.Title;
+            ShortDescription = product.ShortDescription;
+            BigDescription = product.BigDescription;
+            Materials = product.Materials;
+            Price = product.Price;
+        }
     }
 }
